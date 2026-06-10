@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --pos-bg: #f4f6fb;
+    --pos-surface: #ffffff;
+    --pos-card: #ffffff;
+    --pos-border: #d8dfe9;
+    --pos-accent: #5b5ce2;
+    --pos-accent-hover: #4648c8;
+    --pos-success: #16a34a;
+    --pos-warning: #d97706;
+    --pos-danger: #dc2626;
+    --pos-text: #111827;
+    --pos-muted: #64748b;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --pos-bg: #0f1117;
+    --pos-surface: #1a1d27;
+    --pos-card: #21253a;
+    --pos-border: #2d3348;
+    --pos-accent: #6c63ff;
+    --pos-accent-hover: #5a52e0;
+    --pos-success: #22c55e;
+    --pos-warning: #f59e0b;
+    --pos-danger: #ef4444;
+    --pos-text: #e2e8f0;
+    --pos-muted: #64748b;
+  }
+
+  html { font-family: 'Inter', sans-serif; }
+  body { @apply bg-pos-bg text-pos-text min-h-screen; }
+  * { box-sizing: border-box; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-pos-surface; }
+  ::-webkit-scrollbar-thumb { @apply bg-pos-border rounded-full; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-pos-accent hover:bg-pos-accentHover text-white font-semibold py-2 px-4 rounded-lg transition-all duration-150 active:scale-95;
+  }
+  .btn-secondary {
+    @apply bg-pos-card hover:bg-pos-border text-pos-text font-medium py-2 px-4 rounded-lg border border-pos-border transition-all duration-150 active:scale-95;
+  }
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-150 active:scale-95;
+  }
+  .btn-success {
+    @apply bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-150 active:scale-95;
+  }
+  .card {
+    @apply bg-pos-card border border-pos-border rounded-xl;
+  }
+  .input {
+    @apply bg-pos-surface border border-pos-border rounded-lg px-3 py-2 text-pos-text placeholder-pos-muted focus:outline-none focus:border-pos-accent transition-colors w-full;
+  }
+  .label {
+    @apply text-xs font-medium text-pos-muted uppercase tracking-wider mb-1 block;
+  }
+}
+
+@media print {
+  body { background: white !important; color: black !important; }
+  body * { visibility: hidden !important; }
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .print-only, .print-only * { visibility: visible !important; }
+  .print-only {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 80mm !important;
+  }
+  @page { size: 80mm auto; margin: 0; }
+}
